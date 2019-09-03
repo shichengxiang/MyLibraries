@@ -1,0 +1,84 @@
+apply plugin: 'maven'
+
+//读取第一个配置文件 maven_user.properties
+def releaseRepoUrl = "http://maven.aixuexi.com:8081/nexus/content/repositories/releases"
+def snapshotsRepoUrl = "http://maven.aixuexi.com:8081/nexus/content/repositories/snapshots"
+
+//读取第二个配置文件 maven_pom.properties
+def pom_name = "android"
+def pom_description = "直播平台:基础库"
+def pom_group = "com.gaosiedu.gsl.gsl-android-sdk"
+def pom_artifact_id = "platform"
+def pom_packaging = "aar"
+
+def pom_version_type = "release"
+//def pom_version_type = getLocalBuildType()
+def pom_version_release = "1.0.0.9"
+//def pom_version_dev = "1.0.0.0"
+
+def repoUrl
+def pom_version
+
+uploadArchives {
+    if (pom_version_type.equalsIgnoreCase("dev")) {
+        //dev开发模式下 版本后缀 -SNAPSHOT 上传到snapshot
+        repoUrl = snapshotsRepoUrl
+        //pom_version = pom_version_dev
+    } else if (pom_version_type.equalsIgnoreCase("release")){
+        repoUrl = releaseRepoUrl
+        pom_version = pom_version_release
+    } else {
+        throw Exception(">>>上传失败，POM_VERSION_TYPE = " + pom_version_type)
+    }
+
+    repositories.mavenDeployer {
+        repository(id: "nexus", url: repoUrl){
+            authentication(userName: "admin", password: "admin123")
+        }
+
+        pom.project {
+            name pom_name
+            description pom_description
+            url repoUrl
+            groupId pom_group
+            artifactId pom_artifact_id
+            version pom_version
+            packaging pom_packaging
+        }
+    }
+}
+
+task cleanDir(type:Delete) {
+    delete buildDir
+}
+
+task androidJavadocs(type: Javadoc) {
+    // 设置源码所在的位置
+    source = android.sourceSets.main.java.sourceFiles
+}
+
+// 生成javadoc.jar
+task androidJavadocsJar(type: Jar) {
+    // 指定文档名称
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+// 生成sources.jar
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+
+//是否是开发版本
+def isDevOrBetaBuild(String version) {
+    if (version == null || version.isEmpty()){
+        throw Exception(">>>>>>>>>>>>>>编译失败，POM_VERSION_TYPE = "+pom_version_type+" ,请确认maven_user.properties文件中 POM_VERSION_TYPE 参数填写正确，POM版本必须为（DEV、BETA、RELEASE）中的一种类型<<<<<<<<<<");
+    }
+    return version.contains("Dev") || version.contains("Beta")
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
