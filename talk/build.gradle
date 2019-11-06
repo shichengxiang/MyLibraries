@@ -1,0 +1,49 @@
+apply plugin: 'com.android.library'
+apply from:'aar-upload.gradle'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+//上传到maven
+apply plugin: 'maven'
+
+def coreAarFile = file('libs/classroomsdk-release.aar')
+artifacts {
+    archives coreAarFile
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(id:"nexus",url: "http://maven.aixuexi.com:8081/nexus/content/repositories/releases"){
+                authentication(userName: "admin", password: "admin123")
+            }
+            pom.version = "1.0.0.1"
+            pom.artifactId = "talkresource"
+            pom.groupId = "com.gaosi.haoke"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

@@ -1,15 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="10dp"
         tools:context=".MainActivity">
 
-    <com.scx.mylibs.views.GSPlayer
-            android:id="@+id/gsVideo"
+    <EditText
+            android:id="@+id/etClassId"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="输入classId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+            android:id="@+id/etLessonId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入LessonId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etClassId" />
+
+    <EditText
+            android:id="@+id/etStudentId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入学员编号"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etLessonId" />
+
+    <EditText
+            android:id="@+id/etNickName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入昵称"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etStudentId" />
+
+    <Button
+            android:id="@+id/btnEnter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="进入房间"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etNickName" />
 </android.support.constraint.ConstraintLayout>

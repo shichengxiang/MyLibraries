@@ -22,6 +22,8 @@ allprojects {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven { url "http://maven.aixuexi.com:8081/nexus/content/groups/public/" }
+        maven { url "https://jitpack.io" }
     }
 }
 

@@ -1,0 +1,23 @@
+apply plugin: 'maven-publish'
+//apply plugin: 'maven'
+publishing {
+    repositories {
+        maven {
+            credentials {
+                username "admin"
+                password "admin123"
+            }
+            url "http://maven.aixuexi.com:8081/nexus/content/repositories/releases" //maven库地址
+        }
+    }
+
+
+    publications {
+        audio(MavenPublication) {
+            groupId 'com.gaosi.haoke'
+            artifactId 'liteimsdk'
+            version '1.0.0.1'
+            artifact 'libs/liteimsdk-release.aar' //aar目录下面的audio.aar文件
+        }
+    }
+}

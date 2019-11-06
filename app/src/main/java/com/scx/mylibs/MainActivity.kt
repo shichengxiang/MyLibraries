@@ -1,12 +1,31 @@
 package com.scx.mylibs
 
 import android.os.Bundle
+import android.support.multidex.MultiDex
 import android.support.v7.app.AppCompatActivity
-import com.scx.mylibs.ext.open
-import com.scx.mylibs.ext.tryCatch
+import com.haoke91.room.LiveManager
+import com.haoke91.room.interfaces.RoomListener
+import com.scx.mylibs.ext.toast
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), RoomListener {
+    override fun onClassBegin() {
+    }
+
+    override fun onClassDismiss() {
+    }
+
+    override fun onEnterRoom() {
+    }
+
+    override fun onError(code: Int, errMsg: String) {
+    }
+
+    override fun onKickOut(res: Int) {
+    }
+
+    override fun onWarning(code: Int) {
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,14 +34,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-//        gsVideo.setVideoPath()
-//        AssetFileDescriptor afd = assetManager.openFd("one.mp3");
-//        MediaPlayer mediaPlayer = new MediaPlayer();
-//        mediaPlayer.setDataSource(afd.getFileDescriptor()
-//            , afd.getStartOffset()
-//            , afd.getLength());
-//        gsVideo.setVideoPath("https://www.iqiyi.com/897a7808-32ac-4ad0-8152-340960307499")
-        gsVideo.setUrl(assets.openFd("record.mp4"))
+        btnEnter.setOnClickListener {
+            if (!verifyparams()) {
+                toast("请确认参数是否为空")
+            }
+            val liveManager = LiveManager.newInstance()
+            liveManager.apply {
+                setListener(this@MainActivity)
+                enterRoom(
+                    this@MainActivity,
+                    etClassId.text.toString(),
+                    etLessonId.text.toString(),
+                    etStudentId.text.toString(),
+                    etNickName.text.toString()
+                )
+            }
+        }
+    }
+
+    private fun verifyparams(): Boolean {
+        if (etClassId.text.toString().isNullOrEmpty()) return false
+        if (etLessonId.text.toString().isNullOrBlank()) return false
+        if (etStudentId.text.toString().isNullOrBlank()) return false
+        if (etNickName.text.toString().isNullOrBlank()) return false
+        return true
     }
 
 }

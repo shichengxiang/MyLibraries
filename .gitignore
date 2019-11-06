@@ -11,3 +11,9 @@
 /build
 /captures
 .externalNativeBuild
+# mvp sdk
+/lib-baselib-91haoke-android
+/lib-classroomsdk-91haoke-android
+/lib-eduhdsdk-91haoke-android
+/lib-gsplayer-91haoke-android
+/react

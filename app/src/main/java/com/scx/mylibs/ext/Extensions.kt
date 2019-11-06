@@ -3,8 +3,10 @@ package com.scx.mylibs.ext
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.widget.TextView
+import com.blankj.utilcode.util.ToastUtils
 import java.lang.Exception
 
 /**
@@ -16,7 +18,18 @@ import java.lang.Exception
  */
 
 fun Context.open(clz: Class<Activity>) {
+    if (this !is Activity) {
+        log("context that start activity is not activity")
+    }
     startActivity(Intent(this, clz))
+}
+
+fun log(msg: String) {
+    Log.d("livemanger===", msg)
+}
+
+fun toast(msg: String) {
+    ToastUtils.showShort(msg)
 }
 
 fun <T> tryCatch(block: () -> T) {
