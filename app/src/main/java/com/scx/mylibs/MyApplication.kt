@@ -3,6 +3,7 @@ package com.scx.mylibs
 import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
+import com.haoke91.room.LiveManager
 
 /**
  * 项目名称：MyLibs
@@ -14,5 +15,10 @@ class MyApplication : Application(){
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         MultiDex.install(base)
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        LiveManager.init(this)
     }
 }

@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity(), RoomListener {
             }
             val liveManager = LiveManager.newInstance()
             liveManager.apply {
+                isDebug(true)
                 setListener(this@MainActivity)
                 enterRoom(
                     this@MainActivity,
