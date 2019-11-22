@@ -1,7 +1,6 @@
 package com.scx.mylibs
 
 import android.os.Bundle
-import android.support.multidex.MultiDex
 import android.support.v7.app.AppCompatActivity
 import com.haoke91.room.LiveManager
 import com.haoke91.room.interfaces.RoomListener
@@ -41,7 +40,7 @@ class MainActivity : AppCompatActivity(), RoomListener {
             }
             val liveManager = LiveManager.newInstance()
             liveManager.apply {
-//                isDebug(true)
+                isDebug(true)
                 setListener(this@MainActivity)
                 enterRoom(
                     this@MainActivity,

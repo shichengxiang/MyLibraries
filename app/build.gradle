@@ -3,6 +3,14 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 android {
+    signingConfigs {
+        release {
+            storeFile file('../mylibs.jks')
+            storePassword '123456'
+            keyAlias = 'gaosi'
+            keyPassword '123456'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.scx.mylibs"
@@ -20,8 +28,14 @@ android {
         main.resources.srcDirs += "../gradle.properties"
     }
     buildTypes {
+        debug {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

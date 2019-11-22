@@ -22,7 +22,7 @@
 -ignorewarnings                     # 忽略警告，避免打包时某些警告出现
 -optimizationpasses 5               # 指定代码的压缩级别
 -dontusemixedcaseclassnames         # 是否使用大小写混合
--skipnonpubliclibraryclasses    # 是否混淆第三方jar dont
+#-skipnonpubliclibraryclasses    # 是否混淆第三方jar dont
 #-dontpreverify                      # 混淆时是否做预校验
 -verbose                            # 混淆时是否记录日
 -dontwarn android.support.v4.**
@@ -31,7 +31,7 @@
 -keep class com.haoke91.baselibrary.model.**{*;}#实体类
 -keep class com.haoke91.im.**{*;}#消息
 -keep class airbnb.lottie.** {*;} #lottie 动画view
--keep classs com.alibaba.android.**{*;} #urtraViewPager view
+-keep class com.alibaba.android.**{*;}
 -keep class comalibaba.fastjson.** {*;} #fastjson
 -keep class com.alibaba.sdk.android.**{*;}
 -keep class android.support.**{*;}# v7
@@ -51,7 +51,8 @@
 # Retrofit
 -dontwarn retrofit2.**
 -keep class retrofit2.** { *; }
--keepattributes Signature-keepattributes Exceptions
+#-keep attributes Signature
+#-keep attributes Exceptions
 # RxJava RxAndroid
 -dontwarn sun.misc.**
 -keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
@@ -85,7 +86,6 @@
 -keepclasseswithmembernames class * {       # 保持 native 方法不被混淆
     native <methods>;
 }
-
 -keepclasseswithmembers class * {            # 保持自定义控件类不被混淆
     public <init>(android.content.Context, android.util.AttributeSet);
 }
@@ -109,5 +109,46 @@
 #talk
 -keep class com.classroomsdk.**{*;}
 -keep class com.eduhdsdk.**{*;}
+# 实体 +拓课
+-keep class com.haoke91.entities.**{*;}
+-keep class com.gaosiedu.**{*;}
+-keep class com.haoke91.**{*;}
+-keep class com.haoke91.a91edu.domain.**{*;}
+-keep class com.haoke91.a91edu.entities.**{*;}
+-keep class com.eduhdsdk.**{*;}
+-keep class com.classroomsdk.**{*;}
+-keep class com.talkcloud.**{*;}
+-keep class * extends **.View{*;}
+
+#如果引用了v4或者v7包
+-dontwarn android.support.**
+-keep class android.support.**{*;}
+
+#泛型
+-keepattributes Signature
+
+-keep public class **.R$*{
+   public static final int *;
+}
+
+-keep class **$Properties
+-keep class org.tkwebrtc.**{*;}
+-keep class org.chromium.**{*;}
+-keep class org.apache.**{*;}
+-keep class org.xwalk.**{*;}
+-keep class pl.droidsonroids.**{*;}
+-keep class com.hitry.**{*;}
+-keep class com.talkcloud.**{*;}
+-keep class io.tksocket.**{*;}
+-keep class io.socket.**{*;}
+-keep class skin.support.**{*;}
+-keep class net.hockeyapp.android.**{*;}
+-keep class com.classroomsdk.**{*;}
+-keepattributes *Annotation*
+-keepattributes *JavascriptInterface*
+-keepclassmembers class com.classroomsdk.JSWhitePadInterface{
+  public *;
+}
+
 
 
