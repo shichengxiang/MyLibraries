@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity(), RoomListener {
     }
 
     override fun onError(code: Int, errMsg: String) {
+        toast(errMsg)
     }
 
     override fun onKickOut(res: Int) {
@@ -40,10 +41,11 @@ class MainActivity : AppCompatActivity(), RoomListener {
             }
             val liveManager = LiveManager.newInstance()
             liveManager.apply {
-                isDebug(true)
+//                isDebug(true)
                 setListener(this@MainActivity)
                 enterRoom(
                     this@MainActivity,
+                    etClassTypeId.text.toString(),
                     etClassId.text.toString(),
                     etLessonId.text.toString(),
                     etStudentId.text.toString(),

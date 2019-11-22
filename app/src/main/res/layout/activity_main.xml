@@ -6,16 +6,23 @@
         android:layout_height="match_parent"
         android:padding="10dp"
         tools:context=".MainActivity">
-
+    <EditText
+            android:id="@+id/etClassTypeId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="输入班型"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     <EditText
             android:id="@+id/etClassId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:hint="输入classId"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/etClassTypeId"/>
 
     <EditText
             android:id="@+id/etLessonId"
