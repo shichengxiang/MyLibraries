@@ -36,6 +36,7 @@
 -keep class com.alibaba.sdk.android.**{*;}
 -keep class android.support.**{*;}# v7
 -keep class tencent.**{*;} #腾讯播放器
+-keep class com.tencent.**{*;}
 -keep class com.bumptech.glide.**{*;} #glide
 -keep class com.lzy.okgo.**{*;} #okgo
 # Gson
@@ -149,6 +150,5 @@
 -keepclassmembers class com.classroomsdk.JSWhitePadInterface{
   public *;
 }
-
 
 
