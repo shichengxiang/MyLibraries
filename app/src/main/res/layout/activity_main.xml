@@ -1,63 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp"
         tools:context=".MainActivity">
-    <EditText
-            android:id="@+id/etClassTypeId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="输入班型"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    <EditText
-            android:id="@+id/etClassId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="输入classId"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etClassTypeId"/>
 
-    <EditText
-            android:id="@+id/etLessonId"
-            android:layout_width="match_parent"
+    <TextView
+            android:id="@+id/tvExchangeMode"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="输入LessonId"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etClassId" />
+            android:layout_alignParentRight="true"
+            android:padding="6dp"
+            android:text="切换入口"
+            android:textColor="#7c7c7c"
+            android:textSize="14dp" />
 
-    <EditText
-            android:id="@+id/etStudentId"
+    <FrameLayout
+            android:id="@+id/fl_layouts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="输入学员编号"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etLessonId" />
+            android:layout_below="@id/tvExchangeMode"
+            android:layout_marginTop="10dp">
 
-    <EditText
-            android:id="@+id/etNickName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="输入昵称"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etStudentId" />
+        <android.support.constraint.ConstraintLayout
+                android:id="@+id/layout_student"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:visibility="gone">
+
+            <EditText
+                    android:id="@+id/etClassTypeId"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="输入班型"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                    android:id="@+id/etClassId"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="输入classId"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etClassTypeId" />
+
+            <EditText
+                    android:id="@+id/etLessonId"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="输入LessonId"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etClassId" />
+
+            <EditText
+                    android:id="@+id/etStudentId"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="输入学员编号"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etLessonId" />
+
+            <EditText
+                    android:id="@+id/etNickName"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="输入昵称"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etStudentId" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+                android:id="@+id/layout_bx"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+            <EditText
+                    android:id="@+id/etUserId"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="输入用户id"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etClassId" />
+
+            <EditText
+                    android:id="@+id/etCkId"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="输入课程id"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etClassId" />
+
+            <EditText
+                    android:id="@+id/etAppId"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:hint="输入appId"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etClassId" />
+
+        </LinearLayout>
+    </FrameLayout>
 
     <Button
             android:id="@+id/btnEnter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/fl_layouts"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
+            android:background="@drawable/selector_btn_1"
             android:text="进入房间"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etNickName" />
-</android.support.constraint.ConstraintLayout>
+            android:elevation="3dp"
+            android:textColor="@color/white"
+            android:textSize="13dp" />
+</RelativeLayout>
