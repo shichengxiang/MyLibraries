@@ -15,6 +15,15 @@
             android:text="切换入口"
             android:textColor="#7c7c7c"
             android:textSize="14dp" />
+    <TextView
+            android:id="@+id/tvCuttentRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:padding="6dp"
+            android:text="北校入口"
+            android:textColor="@color/Blue"
+            android:textSize="10dp" />
 
     <FrameLayout
             android:id="@+id/fl_layouts"
@@ -102,6 +111,15 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etClassId" />
+            <EditText
+                    android:id="@+id/etBxNickName"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="输入用户昵称"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etClassId" />
 
             <EditText
                     android:id="@+id/etCkId"
@@ -109,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:hint="输入课程id"
+                    android:hint="输入课次id"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/etClassId" />

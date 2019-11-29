@@ -62,6 +62,7 @@ class MainActivity : AppCompatActivity(), RoomListener, BaseView {
                     enterBxRoom(
                         this@MainActivity,
                         etUserId.text.toString(),
+                        etBxNickName.text.toString(),
                         etCkId.text.toString(),
                         "123",
                         "",
@@ -76,6 +77,8 @@ class MainActivity : AppCompatActivity(), RoomListener, BaseView {
         }
         tvExchangeMode.setOnClickListener {
             mPresenter?.exChangeMode(layout_student, layout_bx)
+            tvCuttentRole.text =
+                if (mPresenter?.currentMode == MainPresenter.MODE_BX) "北校入口" else "学生端入口"
         }
     }
 
