@@ -64,10 +64,10 @@ class MainActivity : AppCompatActivity(), RoomListener, BaseView {
                         etUserId.text.toString(),
                         etBxNickName.text.toString(),
                         etCkId.text.toString(),
-                        "123",
-                        "",
-                        "",
-                        ""
+                        etAppId.text.toString(),
+                        etRandom.text.toString(),
+                        etExpire.text.toString(),
+                        etAppSign.text.toString()
                     )
                 }
             }
