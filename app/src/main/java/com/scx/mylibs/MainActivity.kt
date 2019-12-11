@@ -13,9 +13,11 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), RoomListener, BaseView {
     var mPresenter: MainPresenter? = null
     override fun onClassBegin() {
+        toast("上课了")
     }
 
     override fun onClassDismiss() {
+        toast("下课了")
     }
 
     override fun onEnterRoom() {
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity(), RoomListener, BaseView {
     }
 
     override fun onKickOut(res: Int) {
+        toast("被踢出了 $res")
     }
 
     override fun onWarning(code: Int) {
