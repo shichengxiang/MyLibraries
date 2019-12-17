@@ -132,13 +132,13 @@ public class BatteryView extends View {
 
     @Override
     protected void onAttachedToWindow() {
-        getContext().registerReceiver(mPowerConnectionReceiver,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+//        getContext().registerReceiver(mPowerConnectionReceiver,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
         super.onAttachedToWindow();
     }
 
     @Override
     protected void onDetachedFromWindow() {
-        getContext().unregisterReceiver(mPowerConnectionReceiver);
+//        getContext().unregisterReceiver(mPowerConnectionReceiver);
         super.onDetachedFromWindow();
     }
     private int px2px(int px){

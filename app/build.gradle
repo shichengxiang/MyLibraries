@@ -49,5 +49,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api project(':lib-gsplayer-91haoke-android')
-//    api('com.gaosi.haoke:gsplayer:1.1.72')
+//    api('com.gaosi.haoke:gsplayer:1.1.75-SNAPSHOT')
 }
