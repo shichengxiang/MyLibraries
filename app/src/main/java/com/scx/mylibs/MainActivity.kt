@@ -62,16 +62,25 @@ class MainActivity : AppCompatActivity(), RoomListener, BaseView {
                         etNickName.text.toString()
                     )
                 } else {
-                    enterBxRoom(
-                        this@MainActivity,
-                        etUserId.text.toString(),
-                        etBxNickName.text.toString(),
-                        etCkId.text.toString(),
-                        etAppId.text.toString(),
-                        etRandom.text.toString(),
-                        etExpire.text.toString(),
-                        etAppSign.text.toString()
-                    )
+//                    "random": "ec0cbf986d1540b183b35343fc0246a1",
+//                    "appSign": "E90072956D66FC2999C6DEF4E45EDE03",
+//                    "appId": "gaosibx",
+//                    "expire": "1576759995",
+//                    "nickname": "吴依华",
+//                    "userId": "253421",
+//                    "ckId": "21398"
+                    enterBxRoom(this@MainActivity,"253421","我是测试","21398","E90072956D66FC2999C6DEF4E45EDE03",
+                        "ec0cbf986d1540b183b35343fc0246a1","1576759995","E90072956D66FC2999C6DEF4E45EDE03")
+//                    enterBxRoom(
+//                        this@MainActivity,
+//                        etUserId.text.toString(),
+//                        etBxNickName.text.toString(),
+//                        etCkId.text.toString(),
+//                        etAppId.text.toString(),
+//                        etRandom.text.toString(),
+//                        etExpire.text.toString(),
+//                        etAppSign.text.toString()
+//                    )
                 }
             }
         }
